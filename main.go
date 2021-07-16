@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-  fmt.Printf("Hello from Reviewpad")
+  fmt.Printf("Hello from Reviewpad.")
 }
 
