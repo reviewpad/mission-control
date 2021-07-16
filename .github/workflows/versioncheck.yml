@@ -2,7 +2,7 @@ name: dbmigrationcheck
 
 on:
   push:
-    branches: [ * ]
+    branches: [ go-main ]
   pull_request:
 
   # Allows you to run this workflow manually from the Actions tab
