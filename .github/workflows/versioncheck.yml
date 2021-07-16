@@ -1,0 +1,31 @@
+name: dbmigrationcheck
+
+on:
+  push:
+    branches: [ * ]
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check for repeated file versions 
+        run: |
+          revnums=()
+          for file in $GITHUB_WORKSPACE/versions/*.txt; do
+            REVNUM=`echo "$file" | cut -d '_' -f1`
+            for _revnum in "${revnums[@]}"; do
+              if [ $_revnum == $REVNUM ]; then
+                echo "$REVNUM is repeated"
+                exit 1
+              fi
+            done
+            revnums+=("$REVNUM")
+          done
+
