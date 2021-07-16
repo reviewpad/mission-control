@@ -1,4 +1,4 @@
-name: dbmigrationcheck
+name: versioncheck 
 
 on:
   push:
